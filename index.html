@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Orbyte – Learn by Doing</title>
+  <meta name="description" content="Gain real-world IT experience on team projects, guided by senior mentors. Build a job-ready portfolio and land your first IT role faster." />
+  <style>
+    :root{
+      --blue:#1E73BE; /* Trust Blue */
+      --blue-dark:#0F2A43;
+      --green:#28A745; /* Action Green */
+      --gray-900:#121417;
+      --gray-700:#3F4450;
+      --gray-500:#7A8292;
+      --gray-100:#F2F5F9;
+      --mint:#E6F4EA;
+      --error:#D9534F;
+      --radius:14px;
+      --shadow:0 10px 30px rgba(15,42,67,.12);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--gray-900);}
+    a{color:inherit}
+    .container{max-width:1120px;margin:0 auto;padding:0 20px}
+    .btn{display:inline-block;background:var(--green);color:#fff;padding:14px 20px;border:none;border-radius:999px;font-weight:700;text-decoration:none;cursor:pointer;box-shadow:var(--shadow);}
+    .btn:hover{filter:brightness(1.05)}
+    .btn-secondary{background:#fff;color:var(--blue);border:2px solid var(--blue)}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e6eef7;color:var(--blue);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;}
+    header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #E9EEF5;backdrop-filter:saturate(180%) blur(8px)}
+    header .bar{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    header .logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--blue)}
+    header nav a{margin:0 10px;color:var(--gray-700);font-weight:600;text-decoration:none}
+    header .cta{display:flex;gap:10px;align-items:center}
+
+    /* HERO */
+    .hero{background:linear-gradient(180deg,#f7fbff 0%,#fff 100%);}
+    .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center;padding:48px 0}
+    .eyebrow{display:inline-flex;gap:10px;align-items:center;font-size:12px;font-weight:800;color:var(--blue);letter-spacing:.08em;text-transform:uppercase}
+    h1{font-size:48px;line-height:1.1;margin:.2em 0 .2em}
+    .sub{font-size:18px;color:var(--gray-700);max-width:52ch}
+    .trust-row{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0}
+
+    .card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+    .signup-card{position:relative}
+    .signup-card h3{margin:0 0 10px}
+    .input{width:100%;padding:14px 16px;border:1.5px solid #dfe7f2;border-radius:10px;margin:10px 0;font-size:16px}
+    .oauth{display:grid;grid-template-columns:1fr;gap:8px;margin-top:8px}
+    .oauth button{padding:12px;border-radius:10px;border:1.5px solid #dfe7f2;background:#fff;font-weight:700;cursor:pointer}
+    .meta{font-size:12px;color:var(--gray-500);margin-top:6px}
+    .counter{font-weight:800;color:var(--error)}
+
+    /* Sections */
+    section{padding:64px 0}
+    .section-title{font-size:32px;margin:0 0 12px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .grid-3 .feature{background:#fff;border:1px solid #EEF3F9;border-radius:14px;padding:20px}
+
+    .pain{background:var(--gray-100)}
+    .pain ul{padding:0;margin:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .pain li{background:#fff;border:1px solid #EEF3F9;border-radius:14px;padding:18px;font-weight:600}
+
+    .proof{background:linear-gradient(180deg,var(--blue) 0%, var(--blue-dark) 100%);color:#fff}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
+    .stat{background:#fff;color:var(--blue-dark);border-radius:14px;padding:20px;text-align:center;font-weight:800}
+    .stat strong{display:block;font-size:28px}
+    .testimonials{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .quote{background:#0f2842;color:#e8f3ff;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:18px}
+
+    .how .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .step{border:1px solid #EEF3F9;border-radius:14px;padding:18px;background:#fff}
+    .step .num{display:inline-flex;width:36px;height:36px;align-items:center;justify-content:center;border-radius:50%;font-weight:800;background:var(--blue);color:#fff;margin-bottom:8px}
+
+    .bonus{background:var(--mint)}
+    .bonus .box{display:flex;gap:24px;align-items:center}
+    .ebook{width:160px;height:120px;background:#fff;border:1px solid #dfe7f2;border-radius:10px;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--blue)}
+
+    .final-cta{background:var(--blue-dark);color:#fff;text-align:center}
+
+    footer{padding:28px 0;color:var(--gray-500);font-size:13px;border-top:1px solid #E9EEF5}
+
+    /* Mobile */
+    @media (max-width: 900px){
+      .hero .wrap{grid-template-columns:1fr}
+      .grid-3,.stats,.testimonials,.how .steps,.pain ul{grid-template-columns:1fr}
+      h1{font-size:36px}
+    }
+
+    /* Sticky mobile CTA */
+    .sticky-cta{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);z-index:60;background:var(--green);color:#fff;padding:12px 16px;border-radius:999px;font-weight:800;box-shadow:var(--shadow)}
+    @media (min-width: 901px){.sticky-cta{display:none}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container bar">
+      <div class="logo">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.77 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z" fill="currentColor"/></svg>
+        <span>Orbyte</span>
+      </div>
+      <nav aria-label="Primary">
+        <a href="#pain">Why It Works</a>
+        <a href="#proof">Results</a>
+        <a href="#how">How It Works</a>
+      </nav>
+      <div class="cta"><a class="btn" href="#signup">Join Free</a></div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container wrap">
+        <div>
+          <div class="eyebrow"><span>Mentor‑Led</span><span>•</span><span>Real Projects</span><span>•</span><span>Career‑Focused</span></div>
+          <h1 id="hero-title">Land Your First IT Job Faster — By Doing, Not Just Studying</h1>
+          <p class="sub">Get hands-on project experience in real teams, guided by senior mentors. Build a job‑ready portfolio and confidence in weeks — not years.</p>
+          <div class="trust-row">
+            <span class="badge">No credit card required</span>
+            <span class="badge">Sign up in under 60s</span>
+            <span class="badge">Beginner‑friendly</span>
+          </div>
+        </div>
+        <div>
+          <div id="signup" class="card signup-card" aria-labelledby="signup-title">
+            <h3 id="signup-title">Join the Next Cohort <span class="counter" id="seatLabel"></span></h3>
+            <label for="email" class="meta">Email</label>
+            <input id="email" type="email" class="input" placeholder="you@example.com" aria-required="true" />
+            <button class="btn" style="width:100%">Join Free Now</button>
+            <div class="oauth">
+              <button aria-label="Continue with Google">Continue with Google</button>
+              <button aria-label="Continue with LinkedIn">Continue with LinkedIn</button>
+              <button aria-label="Continue with GitHub">Continue with GitHub</button>
+            </div>
+            <p class="meta">Takes less than 60 seconds. No spam. Cancel anytime.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAIN -->
+    <section id="pain" class="pain" aria-labelledby="pain-title">
+      <div class="container">
+        <h2 id="pain-title" class="section-title">Why Juniors Struggle to Get Hired</h2>
+        <ul>
+          <li>“What real projects have you done?” is the toughest interview question.</li>
+          <li>Tutorials don’t prepare you for teamwork, deadlines, or real IT challenges.</li>
+          <li>Without mentorship, it’s easy to waste months with little progress.</li>
+        </ul>
+        <p class="meta" style="margin-top:10px"><em>You don’t have to figure it out alone.</em></p>
+      </div>
+    </section>
+
+    <!-- SOLUTION -->
+    <section class="solution" aria-labelledby="solution-title">
+      <div class="container">
+        <h2 id="solution-title" class="section-title">Learn Faster. Grow Smarter. Get Hired.</h2>
+        <div class="grid-3">
+          <div class="feature"><strong>Real Projects</strong><br/>Work on real IT use cases (web dev, data, QA, DevOps) in teams.</div>
+          <div class="feature"><strong>Expert Coaching</strong><br/>1:1 feedback & guidance from senior engineers and architects.</div>
+          <div class="feature"><strong>Career Acceleration</strong><br/>Build a standout portfolio and interview with confidence.</div>
+        </div>
+        <p style="margin-top:16px"><a class="btn" href="#signup">Start Your First Project Today — Free</a></p>
+      </div>
+    </section>
+
+    <!-- PROOF & AUTHORITY -->
+    <section id="proof" class="proof" aria-labelledby="proof-title">
+      <div class="container">
+        <h2 id="proof-title" class="section-title" style="color:#fff">87% of Juniors Land a Better Role Within 6 Months</h2>
+        <div class="stats">
+          <div class="stat"><strong>+32%</strong>Avg. salary increase</div>
+          <div class="stat"><strong>87%</strong>Job placement success</div>
+          <div class="stat"><strong>300+</strong>Careers accelerated</div>
+        </div>
+        <div class="testimonials" aria-label="Testimonials">
+          <blockquote class="quote">“This was the bridge between learning and working. In 3 months, I had a portfolio and a job offer.” — <strong>An</strong>, Developer
+          </blockquote>
+          <blockquote class="quote">“I failed 5 interviews before. After real projects and mentorship, I cracked the next one.” — <strong>Thao</strong>, QA Fresher
+          </blockquote>
+        </div>
+        <p class="meta" style="color:#bcd7ff;margin-top:12px">Mentors from <strong>Google</strong>, <strong>Microsoft</strong>, and <strong>VNG</strong>.</p>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="how" aria-labelledby="how-title">
+      <div class="container">
+        <h2 id="how-title" class="section-title">Your Path in 3 Simple Steps</h2>
+        <div class="steps">
+          <div class="step"><span class="num">1</span><br/><strong>Sign Up (Free)</strong><br/>Register with Google/LinkedIn in under 60 seconds.</div>
+          <div class="step"><span class="num">2</span><br/><strong>Join a Project Track</strong><br/>Web dev, Data, QA, DevOps, and more.
+          </div>
+          <div class="step"><span class="num">3</span><br/><strong>Work. Learn. Showcase.</strong><br/>Deliver with your team, add projects to your portfolio, ace interviews.</div>
+        </div>
+        <p style="margin-top:16px"><a class="btn" href="#signup">Reserve Your Spot — Cohort Starts <span id="mondayLabel"></span></a></p>
+      </div>
+    </section>
+
+    <!-- BONUS -->
+    <section class="bonus" aria-labelledby="bonus-title">
+      <div class="container">
+        <h2 id="bonus-title" class="section-title">Sign Up Today — Get a Free Career Roadmap Guide</h2>
+        <div class="box">
+          <div class="ebook">IT Career Roadmap</div>
+          <div>
+            <p>All new members receive our exclusive <strong>IT Career Roadmap (PDF)</strong> showing the fastest path from junior to senior roles.</p>
+            <p><a class="btn" href="#signup">Join Free & Claim Your Guide</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta" aria-labelledby="final-title">
+      <div class="container">
+        <h2 id="final-title" class="section-title" style="color:#fff">Your IT Career Won’t Wait. Neither Should You.</h2>
+        <p><a class="btn" href="#signup">Join Free — Start Your First Project Now</a></p>
+        <p class="meta" id="finalSeats">37 seats left · Cohort starts Monday</p>
+      </div>
+    </section>
+  </main>
+
+  <a class="sticky-cta" href="#signup" aria-label="Join Free Now (sticky)">Join Free Now · <span id="stickySeats">37 left</span></a>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Orbyte — Practical, mentor‑led learning for junior IT talent.
+    </div>
+  </footer>
+
+  <script>
+    // Simple utilities for live cohort info and seat counter
+    (function(){
+      const now=new Date();
+      // Compute next Monday label
+      const day=now.getDay(); // 0=Sun
+      const diff=(1 + 7 - day) % 7 || 7; // days until next Monday (at least 1)
+      const nextMonday=new Date(now.getFullYear(),now.getMonth(),now.getDate()+diff);
+      const opts={weekday:'long', month:'short', day:'numeric'};
+      const mondayLabel=document.getElementById('mondayLabel');
+      if(mondayLabel){mondayLabel.textContent=nextMonday.toLocaleDateString(undefined,opts);}    
+
+      // Seat counter (demo): start between 32-49 and
